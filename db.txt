@@ -1,24 +1,52 @@
- create table userdetail(fname varchar(50),lname varchar(50),contact varchar(12),email varchar(50),password varchar(50),primary key(email));
+desc userdetail;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ FNAME                                              VARCHAR2(50)
+ LNAME                                              VARCHAR2(50)
+ CONTACT                                            VARCHAR2(15)
+ EMAIL                                     NOT NULL VARCHAR2(40)
+ PASSWORD                                           VARCHAR2(25)
 
 
 
-create table admindetail(email varchar(50),password varchar(50),primary key(email));
+ desc admindetail;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMAIL                                     NOT NULL VARCHAR2(50)
+ PASSWORD                                           VARCHAR2(50)
 
-insert into admindetail values('admin@gmail.com','admin123ok');
+
+desc cars;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ TYPE                                               VARCHAR2(50)
+ VEHICAL_ID                                NOT NULL VARCHAR2(50)
+ MODEL_NAME                                         VARCHAR2(50)
+ MODEL_NO                                           VARCHAR2(50)
+ DOM                                                DATE
+ PRIZE                                              NUMBER
+ RENTALPRIZE                                        NUMBER
+
+
+desc sold;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ VID                                                VARCHAR2(50)
+ MODEL_NAME                                         VARCHAR2(50)
+ MODEL_NO                                           VARCHAR2(50)
+ PRIZE                                              NUMBER
 
 
 
- create or replace procedure p12(fname in varchar2,lname in varchar2,contact in varchar2,em in varchar2,pass in  varchar2)
- as
-counter Integer;
-begin
-select count(*) into counter from userdetail
-where userdetail.email=em;
-if(counter>=1) then
-DBMS_OUTPUT.PUT_LINE('Email Already registered');
-else
-INSERT INTO  USERDETAIL VALUES (fname,lname,contact,em,pass);
-DBMS_OUTPUT.PUT_LINE('Inserted');
-END IF;
-end;
-/
+
+ desc rent;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ VEHICAL_ID                                         VARCHAR2(50)
+ VEHICLE_MODEL                                      VARCHAR2(50)
+ CNAME                                              VARCHAR2(50)
+ CMAIL                                              VARCHAR2(50)
+ PNO                                                VARCHAR2(15)
+ DUE                                                DATE
+ AMOUNT                                             NUMBER
+ ADDRESS                                            VARCHAR2(50)
