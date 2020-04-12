@@ -1,0 +1,24 @@
+ create table userdetail(fname varchar(50),lname varchar(50),contact varchar(12),email varchar(50),password varchar(50),primary key(email));
+
+
+
+create table admindetail(email varchar(50),password varchar(50),primary key(email));
+
+insert into admindetail values('admin@gmail.com','admin123ok');
+
+
+
+ create or replace procedure p12(fname in varchar2,lname in varchar2,contact in varchar2,em in varchar2,pass in  varchar2)
+ as
+counter Integer;
+begin
+select count(*) into counter from userdetail
+where userdetail.email=em;
+if(counter>=1) then
+DBMS_OUTPUT.PUT_LINE('Email Already registered');
+else
+INSERT INTO  USERDETAIL VALUES (fname,lname,contact,em,pass);
+DBMS_OUTPUT.PUT_LINE('Inserted');
+END IF;
+end;
+/
