@@ -14,10 +14,12 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-- task: UseDotNet@2
+- task: DotNetCoreCLI@2
   inputs:
-    packageType: 'runtime'
-    version: '4.0.x'
+    command: 'restore'
+    projects: '**/*.csproj'
+    feedsToUse: 'select'
+    includeNuGetOrg: false
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
